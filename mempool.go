@@ -8,7 +8,7 @@ type Pool struct {
 	p *sync.Pool
 }
 
-// NewPool constructs a new Pool.
+// NewPool constructs a new memory Pool for memFile type.
 func NewPool() Pool {
 	return Pool{
 		p: &sync.Pool{

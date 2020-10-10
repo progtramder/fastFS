@@ -8,7 +8,7 @@ import (
 )
 
 type Server struct {
-	Root http.FileSystem
+	Fs http.FileSystem
 }
 
 func NewServer(root string) http.Handler {
@@ -25,7 +25,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		upath = "/" + upath
 		r.URL.Path = upath
 	}
-	serveFile(w, r, s.Root, path.Clean(upath))
+	serveFile(w, r, s.Fs, path.Clean(upath))
 }
 
 func serveFile(w http.ResponseWriter, r *http.Request, fs http.FileSystem, name string) {
